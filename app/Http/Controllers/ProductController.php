@@ -76,7 +76,7 @@ class ProductController extends Controller
     {
         $categories = Category::all();
 
-        $product->increment('view');
+        // $product->increment('view');
         return view('layouts.admin.products.show', compact('product', 'categories'));
     }
 
