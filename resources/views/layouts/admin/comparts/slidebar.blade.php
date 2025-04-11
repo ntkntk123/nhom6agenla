@@ -10,10 +10,10 @@
             <a href="{{ route('products.index') }}" class="nav-link">Quản lí sản phẩm</a>
         </li>
         <li class="nav-item" style="border: 1px solid #ccc; border-radius: 6px; margin-bottom: 8px; padding: 6px;">
-            <a href="#" class="nav-link">Quản lí danh mục</a>
+            <a href="{{ route('admin.categories.index') }}" class="nav-link">Quản lí danh mục</a>
         </li>
         <li class="nav-item" style="border: 1px solid #ccc; border-radius: 6px; margin-bottom: 8px; padding: 6px;">
-            <a href="#" class="nav-link">Thống kê</a>
+            <a href="{{ route('admin.users.index') }}" class="nav-link">Quản lí tài khoản</a>
         </li>
         <li class="nav-item" style="border: 1px solid #ccc; border-radius: 6px; margin-bottom: 8px; padding: 6px;">
             <a href="{{ route('products.trashed') }}" class="nav-link">Khôi phục</a>

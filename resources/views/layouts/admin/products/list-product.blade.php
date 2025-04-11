@@ -32,7 +32,9 @@
                     <td>{{ Str::limit($product->description, 50) }}</td>
                     <td>
                         @if ($product->image)
-                            <img src="{{ asset('storage/' . $product->image) }}" class="img-fluid" width="100">
+                        <img src="{{ asset('storage/products/test.png') }}" width="100">
+
+                        <img src="{{ asset('storage/' . $product->image) }}" class="img-fluid" width="100">
                         @else
                             <span>Không có ảnh</span>
                         @endif
