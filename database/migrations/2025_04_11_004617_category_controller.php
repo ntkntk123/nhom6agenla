@@ -11,19 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('products', function (Blueprint $table) {
-            //
-            $table->softDeletes();
+        Schema::table('categories', function (Blueprint $table) {
+            // $table->softDeletes();
+            $table->timestamps();
+
         });
     }
+    // php artisan migrate --path=/database/migrations/2025_04_11_011651_add_timestamps.php
+
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::table('products', function (Blueprint $table) {
-            //
+        Schema::table('categories', function (Blueprint $table) {
             $table->dropSoftDeletes();
         });
     }
