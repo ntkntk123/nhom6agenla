@@ -29,6 +29,16 @@ class ProductController extends Controller
             'description' => 'nullable|string',
             'image'       => 'nullable|image|max:2048',
             'category_id' => 'required|exists:categories,id',
+        ], [
+            'name.required' => 'Tên không được để trống.',
+            'name.max' => 'Tên không được vượt quá 255 ký tự.',
+            'price.required' => 'Giá không được để trống.',
+            'price.numeric' => 'Giá phải là số.',
+            'price.min' => 'Giá phải lớn hơn hoặc bằng 0.',
+            'image.image' => 'Ảnh phải là định dạng hình ảnh.',
+            'image.max' => 'Ảnh không được vượt quá 2MB.',
+            'category_id.required' => 'Vui lòng chọn danh mục.',
+            'category_id.exists' => 'Danh mục không hợp lệ.',
         ]);
 
         if ($request->hasFile('image')) {
@@ -39,7 +49,6 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')->with('success', 'Sản phẩm đã được thêm!');
     }
-
 
 
 // public function store(Request $request)
@@ -89,7 +98,6 @@ class ProductController extends Controller
 
     public function update(Request $request, Product $product)
     {
-        // Xác thực dữ liệu nhập vào
         $validated = $request->validate([
             'name'        => 'required|string|max:255',
             'price'       => 'required|numeric|min:0',
@@ -98,21 +106,20 @@ class ProductController extends Controller
             'category_id' => 'required|exists:categories,id',
         ]);
 
-        // Kiểm tra xem có file ảnh mới được tải lên không
         if ($request->hasFile('image')) {
-            // Xóa ảnh cũ trong storage
-            Storage::disk('public')->delete($product->image);
-
-            // Lưu ảnh mới vào thư mục 'products'
+            // Xóa ảnh cũ nếu có
+            if ($product->image) {
+                Storage::disk('public')->delete($product->image);
+            }
+            // Upload ảnh mới
             $validated['image'] = $request->file('image')->store('products', 'public');
         }
 
-        // Cập nhật sản phẩm với dữ liệu đã xác thực
         $product->update($validated);
 
-        // Chuyển hướng đến trang chi tiết sản phẩm sau khi cập nhật thành công
         return redirect()->route('products.show', $product->id)->with('success', 'Sản phẩm đã được cập nhật!');
     }
+
 
 
 

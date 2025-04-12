@@ -4,7 +4,11 @@
 
 @section('content')
     <h1>Danh sách người dùng</h1>
-
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 
     <table class="table table-bordered table-hover text-center">
         <thead>

@@ -16,6 +16,12 @@ class CategoryController extends Controller
         return view('layouts.admin.categories.index', compact('categories'));
     }
 
+    public function show($id)
+{
+    $category = Category::findOrFail($id);
+    return view('layouts.admin.categories.show', compact('category'));
+}
+
     // Hiển thị form tạo mới
     public function create()
     {

@@ -6,6 +6,11 @@
         <div class="card-header bg-primary text-white rounded-top-4">
             <h4 class="mb-0">Quản lý người dùng</h4>
         </div>
+        @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
         <div class="card-body p-4">
             @if($users->count() > 0)
             <div class="table-responsive">
