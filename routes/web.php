@@ -34,7 +34,7 @@ Route::get('/user/dashboard', function () {
 |--------------------------------------------------------------------------
 */
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
-    // Route::get('/', [UserController::class, 'getAllUser'])->name('home');
+    Route::get('/', [UserController::class, 'getAllUser'])->name('home');
     // Route::get('/list-user', [UserController::class, 'getAllUser'])->name('list-user');
     Route::get('/list-product', [ProductController::class, 'getAllProduct'])->name('list-product');
     Route::get('/users', [UserController::class, 'index'])->name('users.index');

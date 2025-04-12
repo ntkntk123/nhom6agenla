@@ -5,6 +5,11 @@
 @section('content')
     <h1>Danh sách sản phẩm</h1>
     <a href="{{ route('products.create') }}" class="btn btn-primary mb-3">Thêm sản phẩm</a>
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 
     <!-- Bảng danh sách sản phẩm -->
     <table class="table table-bordered">
@@ -32,8 +37,6 @@
                     <td>{{ Str::limit($product->description, 50) }}</td>
                     <td>
                         @if ($product->image)
-                        <img src="{{ asset('storage/products/test.png') }}" width="100">
-
                         <img src="{{ asset('storage/' . $product->image) }}" class="img-fluid" width="100">
                         @else
                             <span>Không có ảnh</span>

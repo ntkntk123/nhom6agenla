@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
+    public function getAllUser()
+    {
+        $users = User::paginate(10);
+        // Nếu chỉ muốn user chưa bị xóa thì bỏ withTrashed()
+        return view('layouts.admin.users.list-user', compact('users'));
+    }
     public function index()
     {
         $users = User::paginate(10);
@@ -70,7 +76,7 @@ public function destroy($id)
     $user->delete();
 
     return redirect()->route('admin.users.index')
-        ->with('success', 'Người dùng đã được xóa tạm thời (soft delete).');
+        ->with('success', 'Người dùng đã được xóa tạm thời.');
 }
 
     // Khôi phục user đã xóa

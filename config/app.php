@@ -65,7 +65,8 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Ho_Chi_Minh',  // Đặt múi giờ chính xác (ví dụ cho Việt Nam)
+
 
     /*
     |--------------------------------------------------------------------------
